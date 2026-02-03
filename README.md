@@ -1,2 +1,0 @@
-# next
-weboldal web játék
