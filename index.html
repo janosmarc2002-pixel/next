@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizmaster – A Tudás Játéka</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+  body {
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* vízszintesen közép */
+  justify-content: center;  /* FÜGGŐLEGES KÖZÉP */
+
+  text-align: center;
+
+   background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.top-buttons {
+  display: flex;
+  flex-direction: column;   /* ← ettől lesz egymás alatt */
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      color: #ff0000;
+      text-shadow: 0 0 20px #ff0000;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #ddd;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      margin: 10px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .login {
+      background: #ff0000;
+      box-shadow: 0 0 20px #ff0000;
+    }
+
+    .register {
+      background: #000;
+      border: 2px solid #ff0000;
+      box-shadow: 0 0 15px #660000;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff3333;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+      .btn { padding: 12px 25px; font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <p></p>
+
+  
+  <div class="top-buttons">
+  <a href="bejelentkezes.html" class="btn">Bejelentkezés</a>
+  <a href="regisztracio.html" class="btn">Regisztráció</a>
+</div>
+
+  <footer>
+    © 2025 Quizmaster – Minden jog fenntartva
+  </footer>
+</body>
+<script type="module" src="firebase-init.js"></script>
+<script type="module" src="auth-check.js"></script>
+<script src="app.js"></script>
+</html>

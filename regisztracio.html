@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizmaster – Regisztráció</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+    body {
+     
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #ff0000;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff0000;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #ff0000;
+    }
+
+    input {
+      width: 85%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: white;
+      font-size: 1em;
+      outline: none;
+    }
+
+    button {
+      width: 90%;
+      background: #ff0000;
+      border: none;
+      padding: 12px;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    a {
+      display: block;
+      color: #ff6666;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Regisztráció</h1>
+
+    <form onsubmit="regisztral(event)">
+      <input id="username" type="text" placeholder="Felhasználónév" required>
+      <input id="email" type="email" placeholder="E-mail cím" required>
+      <input id="password" type="password" placeholder="Jelszó" required>
+      <input id="password2" type="password" placeholder="Jelszó megerősítése" required>
+      <button type="submit">Regisztrálok</button>
+    </form>
+
+    <a href="index.html">⬅️ Vissza a főoldalra</a>
+  </div>
+
+  <script>
+    function regisztral(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const password2 = document.getElementById("password2").value;
+
+      if (password !== password2) {
+        alert("A jelszavak nem egyeznek!");
+        return;
+      }
+
+      const user = {
+        email: email,
+        username:username,
+        password: password
+      };
+     const registeredUsers = localStorage.getItem("registeredUsers");
+      const users = registeredUsers ? JSON.parse(registeredUsers) : [];
+      const userExists = users.filter(u => u.username === username).length > 0;
+     if (userExists) {
+  alert("sorry mar ven ijen");
+}else {users.push(user);
+localStorage.setItem("registeredUsers",JSON.stringify(users));
+alert("Sikeres regisztráció!");
+      window.location.href = "bejelentkezes.html";
+}
+      
+    }
+  </script>
+</body>
+</html>

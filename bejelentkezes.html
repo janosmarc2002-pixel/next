@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quizmaster – Bejelentkezés</title>
+
+  <style>
+    body {
+      
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px #ff0000;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff0000;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px #ff0000;
+    }
+
+    input {
+      width: 85%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: white;
+      font-size: 1em;
+      outline: none;
+    }
+
+    button {
+      width: 90%;
+      background: #ff0000;
+      border: none;
+      padding: 12px;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    a {
+      display: block;
+      color: #ff6666;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Bejelentkezés</h1>
+
+    <form onsubmit="bejelentkezes(event)">
+      <input id="username" type="text" placeholder="Felhasználónév" required>
+      <input id="password" type="password" placeholder="Jelszó" required>
+      <button type="submit">Bejelentkezés</button>
+    </form>
+
+    <a href="index.html">⬅️ Vissza a főoldalra</a>
+  </div>
+
+  <script>
+    function bejelentkezes(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+ const registeredUsers = localStorage.getItem("registeredUsers");
+      const users = JSON.parse(registeredUsers);
+ 
+ const userToLogin = users.filter(u => u.username === username);
+if (userToLogin.length  !== 1) {
+    alert("felhasznalo nem letezik");
+     window.location.href = "regisztracio.html";
+}
+
+  const user = userToLogin[0];
+
+
+      if (user.password === password) {
+        alert("Sikeres bejelentkezés!");
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      
+        window.location.href = "jatek.html";
+      } else {
+        alert("Hibás jelszó!");
+      }
+    }
+  </script>
+</body>
+</html>
