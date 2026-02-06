@@ -98,19 +98,23 @@
     <a href="index.html">⬅️ Vissza a főoldalra</a>
   </div>
 
-  <script>
-    function regisztral(event) {
-      event.preventDefault();
+<script>
+function regisztral(event) {
+  event.preventDefault();
 
-      const username = document.getElementById("username").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const password2 = document.getElementById("password2").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const password2 = document.getElementById("password2").value;
 
-      if (password !== password2) {
-        alert("A jelszavak nem egyeznek!");
-        return;
-      }
+  if (password !== password2) {
+    alert("A jelszavak nem egyeznek!");
+    return;
+  }
+
+  regisztralSupabase(email, password);
+}
+</script>
+
 
       const user = {
         email: email,
@@ -135,6 +139,7 @@ alert("Sikeres regisztráció!");
 </body>
 
 </html>
+
 
 
 
